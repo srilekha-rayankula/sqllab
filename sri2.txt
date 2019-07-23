@@ -1,0 +1,304 @@
+SQL> select staff_name, LPAD(staff_sal, 15, '$') staff_sal from staff_master;
+
+STAFF_NAME                                                                      
+--------------------------------------------------                              
+STAFF_SAL                                                                       
+------------------------------------------------------------                    
+Arvind                                                                          
+$$$$$$$$$$17000                                                                 
+                                                                                
+Shyam                                                                           
+$$$$$$$$$$20000                                                                 
+                                                                                
+Mohan                                                                           
+$$$$$$$$$$24000                                                                 
+                                                                                
+
+STAFF_NAME                                                                      
+--------------------------------------------------                              
+STAFF_SAL                                                                       
+------------------------------------------------------------                    
+Anil                                                                            
+$$$$$$$$$$20000                                                                 
+                                                                                
+John                                                                            
+$$$$$$$$$$32000                                                                 
+                                                                                
+Allen                                                                           
+$$$$$$$$$$42000                                                                 
+                                                                                
+
+STAFF_NAME                                                                      
+--------------------------------------------------                              
+STAFF_SAL                                                                       
+------------------------------------------------------------                    
+Smith                                                                           
+$$$$$$$$$$62000                                                                 
+                                                                                
+Raviraj                                                                         
+$$$$$$$$$$18000                                                                 
+                                                                                
+Rahul                                                                           
+$$$$$$$$$$22000                                                                 
+                                                                                
+
+STAFF_NAME                                                                      
+--------------------------------------------------                              
+STAFF_SAL                                                                       
+------------------------------------------------------------                    
+Ram                                                                             
+$$$$$$$$$$32000                                                                 
+                                                                                
+
+10 rows selected.
+
+SQL> SELECT STUDENT_NAME,to_char(student_dob,'MONTH, DD YYYY') as DATEOFBIRTH FROM STUDENT_MASTER where to_char(student_dob,'DAY')
+  2  	like '%SUNDAY%' or to_char(student_dob,'DAY') like '%SATURDAY%';
+
+STUDENT_NAME                                                                    
+--------------------------------------------------                              
+DATEOFBIRTH                                                                     
+---------------------------------------------                                   
+Ravi                                                                            
+NOVEMBER , 01 1981                                                              
+                                                                                
+Raj                                                                             
+JANUARY  , 14 1979                                                              
+                                                                                
+Arvind                                                                          
+JANUARY  , 15 1983                                                              
+                                                                                
+
+STUDENT_NAME                                                                    
+--------------------------------------------------                              
+DATEOFBIRTH                                                                     
+---------------------------------------------                                   
+Mehul                                                                           
+JANUARY  , 17 1982                                                              
+                                                                                
+Vijay                                                                           
+JANUARY  , 19 1980                                                              
+                                                                                
+Rajat                                                                           
+JANUARY  , 20 1980                                                              
+                                                                                
+
+STUDENT_NAME                                                                    
+--------------------------------------------------                              
+DATEOFBIRTH                                                                     
+---------------------------------------------                                   
+Ramesh                                                                          
+DECEMBER , 27 1980                                                              
+                                                                                
+Amit Raj                                                                        
+SEPTEMBER, 28 1980                                                              
+                                                                                
+
+8 rows selected.
+
+SQL> SELECT STAFF_NAME,ROUND(MONTHS_BETWEEN(SYSDATE,HIREDATE)) AS MONTHS_WORKED FROM STAFF_MASTER order by months_worked;
+
+STAFF_NAME                                         MONTHS_WORKED                
+-------------------------------------------------- -------------                
+Rahul                                                        187                
+Arvind                                                       198                
+Raviraj                                                      198                
+Smith                                                        208                
+Shyam                                                        209                
+Mohan                                                        210                
+Ram                                                          210                
+Allen                                                        219                
+Anil                                                         220                
+John                                                         222                
+
+10 rows selected.
+
+SQL> SELECT * FROM STAFF_MASTER WHERE TO_CHAR(HIREDATE,'DD') BETWEEN 1 AND 15 AND TO_CHAR(HIREDATE,'MONTH') LIKE '%DECEMBER%' ;
+
+STAFF_CODE STAFF_NAME                                         DESIGN_CODE       
+---------- -------------------------------------------------- -----------       
+ DEPT_CODE STAFF_DOB HIREDATE    MGR_CODE  STAFF_SAL                            
+---------- --------- --------- ---------- ----------                            
+STAFF_ADDRESS                                                                   
+--------------------------------------------------------------------------------
+    100009 Rahul                                                      102       
+        20 16-JAN-78 11-DEC-03     100006      22000                            
+Hyderabad                                                                       
+                                                                                
+
+SQL> SELECT STAFF_NAME,STAFF_SAL, CASE WHEN STAFF_SAL >=50000 THEN 'A'WHEN STAFF_SAL  >25000 AND  STAFF_SAL<50000 THEN 'B' WHEN
+  2  	STAFF_SAL  >10000 AND  STAFF_SAL<25000 THEN 'C' ELSE 'D' END as GRADE from STAFF_MASTER;
+
+STAFF_NAME                                          STAFF_SAL G                 
+-------------------------------------------------- ---------- -                 
+Arvind                                                  17000 C                 
+Shyam                                                   20000 C                 
+Mohan                                                   24000 C                 
+Anil                                                    20000 C                 
+John                                                    32000 B                 
+Allen                                                   42000 B                 
+Smith                                                   62000 A                 
+Raviraj                                                 18000 C                 
+Rahul                                                   22000 C                 
+Ram                                                     32000 B                 
+
+10 rows selected.
+
+SQL> 6.  SELECT STAFF_NAME,TO_CHAR(HIREDATE,'DD MONTH YYYY') AS HIRE_DATE,TO_CHAR(HIREDATE,'DAY')AS DAY FROM STAFF_MASTER
+SP2-0734: unknown command beginning "6.  SELECT..." - rest of line ignored.
+SQL> 	ORDER BY (NEXT_DAY(HIREDATE, 'MONDAY') - HIREDATE) DESC;
+SP2-0734: unknown command beginning "ORDER BY (..." - rest of line ignored.
+SQL> 6.  SELECT STAFF_NAME,TO_CHAR(HIREDATE,'DD MONTH YYYY') AS HIRE_DATE,TO_CHAR(HIREDATE,'DAY')AS DAY FROM STAFF_MASTER
+SP2-0734: unknown command beginning "6.  SELECT..." - rest of line ignored.
+SQL>  SELECT STAFF_NAME,TO_CHAR(HIREDATE,'DD MONTH YYYY') AS HIRE_DATE,TO_CHAR(HIREDATE,'DAY')AS DAY FROM STAFF_MASTER
+  2  	ORDER BY (NEXT_DAY(HIREDATE, 'MONDAY') - HIREDATE) DESC;
+
+STAFF_NAME                                                                      
+--------------------------------------------------                              
+HIRE_DATE                                                                       
+--------------------------------------------                                    
+DAY                                                                             
+------------------------------------                                            
+Allen                                                                           
+23 APRIL     2001                                                               
+MONDAY                                                                          
+                                                                                
+Smith                                                                           
+12 MARCH     2002                                                               
+TUESDAY                                                                         
+
+STAFF_NAME                                                                      
+--------------------------------------------------                              
+HIRE_DATE                                                                       
+--------------------------------------------                                    
+DAY                                                                             
+------------------------------------                                            
+                                                                                
+Arvind                                                                          
+15 JANUARY   2003                                                               
+WEDNESDAY                                                                       
+                                                                                
+Rahul                                                                           
+11 DECEMBER  2003                                                               
+
+STAFF_NAME                                                                      
+--------------------------------------------------                              
+HIRE_DATE                                                                       
+--------------------------------------------                                    
+DAY                                                                             
+------------------------------------                                            
+THURSDAY                                                                        
+                                                                                
+Ram                                                                             
+17 JANUARY   2002                                                               
+THURSDAY                                                                        
+                                                                                
+Raviraj                                                                         
+
+STAFF_NAME                                                                      
+--------------------------------------------------                              
+HIRE_DATE                                                                       
+--------------------------------------------                                    
+DAY                                                                             
+------------------------------------                                            
+11 JANUARY   2003                                                               
+SATURDAY                                                                        
+                                                                                
+Mohan                                                                           
+19 JANUARY   2002                                                               
+SATURDAY                                                                        
+                                                                                
+
+STAFF_NAME                                                                      
+--------------------------------------------------                              
+HIRE_DATE                                                                       
+--------------------------------------------                                    
+DAY                                                                             
+------------------------------------                                            
+Anil                                                                            
+11 MARCH     2001                                                               
+SUNDAY                                                                          
+                                                                                
+Shyam                                                                           
+17 FEBRUARY  2002                                                               
+SUNDAY                                                                          
+
+STAFF_NAME                                                                      
+--------------------------------------------------                              
+HIRE_DATE                                                                       
+--------------------------------------------                                    
+DAY                                                                             
+------------------------------------                                            
+                                                                                
+John                                                                            
+21 JANUARY   2001                                                               
+SUNDAY                                                                          
+                                                                                
+
+10 rows selected.
+
+SQL> SELECT INSTR('Mississippi','i',2,3) AS POSITION FROM DUAL;
+
+  POSITION                                                                      
+----------                                                                      
+         8                                                                      
+
+SQL> select to_char(next_day((last_day(sysdate))-7,'Friday'),'DDSPTH "of" MONTH,yyyy') as "Pay Date" from dual;
+
+Pay Date                                                                        
+-----------------------------------------------------------                     
+TWENTY-SIXTH of JULY     ,2019                                                  
+
+SQL> SELECT STUDENT_CODE,STUDENT_NAME,DECODE(DEPT_CODE,20,'ELECTRICALS',30,'ELECTRONICS','OTHERS') AS DEPT_NAME FROM STUDENT_MASTER;
+
+STUDENT_CODE STUDENT_NAME                                       DEPT_NAME       
+------------ -------------------------------------------------- -----------     
+        1001 Amit                                               OTHERS          
+        1002 Ravi                                               OTHERS          
+        1003 Ajay                                               ELECTRICALS     
+        1004 Raj                                                ELECTRONICS     
+        1005 Arvind                                             OTHERS          
+        1006 Rahul                                              OTHERS          
+        1007 Mehul                                              ELECTRICALS     
+        1008 Dev                                                OTHERS          
+        1009 Vijay                                              ELECTRONICS     
+        1010 Rajat                                              OTHERS          
+        1011 Sunder                                             OTHERS          
+
+STUDENT_CODE STUDENT_NAME                                       DEPT_NAME       
+------------ -------------------------------------------------- -----------     
+        1012 Rajesh                                             ELECTRONICS     
+        1013 Anil                                               ELECTRICALS     
+        1014 Sunil                                              OTHERS          
+        1015 Kapil                                              OTHERS          
+        1016 Ashok                                              OTHERS          
+        1017 Ramesh                                             ELECTRONICS     
+        1018 Amit Raj                                           OTHERS          
+        1019 Ravi Raj                                           OTHERS          
+        1020 Amrit                                              OTHERS          
+        1021 Sumit                                              ELECTRICALS     
+
+21 rows selected.
+
+SQL> select max(staff_sal) as Maximum,min(staff_sal) as minimum,sum(staff_sal) as total,round (avg(staff_sal)) as average from staff_master group by dept_code;
+
+   MAXIMUM    MINIMUM      TOTAL    AVERAGE                                     
+---------- ---------- ---------- ----------                                     
+     42000      17000      91000      30333                                     
+     62000      20000     124000      31000                                     
+     18000      18000      18000      18000                                     
+     32000      24000      56000      28000                                     
+
+SQL> select deptno,count(empno) as "Total number of managers" from emp where job='MANAGER' group by deptno;
+
+    DEPTNO Total number of managers                                             
+---------- ------------------------                                             
+        30                        1                                             
+        20                        1                                             
+        10                        1                                             
+
+SQL> select deptno,sum(sal) from emp where job!='MANAGER' group by deptno having sum(sal)>20000;
+
+no rows selected
+
+SQL> spool c:/sorna/sorna3.txt;

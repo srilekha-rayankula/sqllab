@@ -1,0 +1,34 @@
+SQL> insert into customermaster (customerid,customername,address1,address2,gender,age,phoneno,salary) values ( 6000, 'John','#115 Chicago','#115 Chicago','M',25,7878776,10000);
+insert into customermaster (customerid,customername,address1,address2,gender,age,phoneno,salary) values ( 6000, 'John','#115 Chicago','#115 Chicago','M',25,7878776,10000)
+                                                                                         *
+ERROR at line 1:
+ORA-00904: "SALARY": invalid identifier 
+
+
+SQL>      insert into customermaster (customerid,customername,address1,address2,gender,age,phoneno,salary) values ( 6001, 'Jack','#116 France','#116 France','M',25,434524,20000);
+     insert into customermaster (customerid,customername,address1,address2,gender,age,phoneno,salary) values ( 6001, 'Jack','#116 France','#116 France','M',25,434524,20000)
+                                                                                              *
+ERROR at line 1:
+ORA-00904: "SALARY": invalid identifier 
+
+
+SQL> 	 insert into customermaster (customerid,customername,address1,address2,gender,age,phoneno,salary) values ( 6002, 'James','#114 New York','#114 New York','M',45,431525,15000.50);
+	 insert into customermaster (customerid,customername,address1,address2,gender,age,phoneno,salary) values ( 6002, 'James','#114 New York','#114 New York','M',45,431525,15000.50)
+	                                                                                          *
+ERROR at line 1:
+ORA-00904: "SALARY": invalid identifier 
+
+
+SQL> savepoint sp1;
+
+Savepoint created.
+
+SQL> 3.  insert into customermaster (customerid,customername,address1,address2,gender,age,phoneno,salary) values (6003, 'John','#114 Chicago','#114 Chicago','M',45,439525,19000.60);
+SP2-0734: unknown command beginning "3.  insert..." - rest of line ignored.
+SQL> 4.  rollback to sp1;
+SP2-0734: unknown command beginning "4.  rollba..." - rest of line ignored.
+SQL> 	  commit;
+
+Commit complete.
+
+SQL> spool off;

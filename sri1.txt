@@ -1,0 +1,29 @@
+SQL> select staff_name as EmployeeName,design_code as designationCode from staff_master where hiredate<'01-jan-2003' and staff_sal between 12000 and 25000;
+
+EMPLOYEENAME                                       DESIGNATIONCODE              
+-------------------------------------------------- ---------------              
+Shyam                                                          102              
+Mohan                                                          102              
+Anil                                                           102              
+
+SQL> select staff_code,staff_name,dept_code from staff_master where round(months_between(sysdate,hiredate))>216;
+
+STAFF_CODE STAFF_NAME                                          DEPT_CODE        
+---------- -------------------------------------------------- ----------        
+    100004 Anil                                                       20        
+    100005 John                                                       10        
+    100006 Allen                                                      30        
+
+SQL> select * from staff_master where mgr_code is null;
+
+no rows selected
+
+SQL> select * from book_master where book_pub_year between 2001 and 2004 and book_name like '%&%';
+
+no rows selected
+
+SQL> select staff_name from staff_master where staff_name like '%\_%' escape '\';
+
+no rows selected
+
+SQL> spool off;

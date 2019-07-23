@@ -1,0 +1,668 @@
+SQL> select staff_name,d.dept_code,dept_name from staff_master s inner join department_master d on s.dept_code=d.dept_code and staff_sal>20000;
+
+STAFF_NAME                                          DEPT_CODE                   
+-------------------------------------------------- ----------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+Mohan                                                      10                   
+Computer Science                                                                
+                                                                                
+John                                                       10                   
+Computer Science                                                                
+                                                                                
+Allen                                                      30                   
+Electronics                                                                     
+                                                                                
+
+STAFF_NAME                                          DEPT_CODE                   
+-------------------------------------------------- ----------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+Smith                                                      20                   
+Electricals                                                                     
+                                                                                
+Rahul                                                      20                   
+Electricals                                                                     
+                                                                                
+Ram                                                        30                   
+Electronics                                                                     
+                                                                                
+
+6 rows selected.
+
+SQL> select s1.staff_code as staff#,s1.staff_name as staff,s1.mgr_code as mgr#,s2.staff_name as manager,d.dept_name from staff_master s1 , staff_master s2,department_master d where s1.mgr_code=s2.staff_code and s1.dept_code=d.dept_code;
+
+    STAFF# STAFF                                                    MGR#        
+---------- -------------------------------------------------- ----------        
+MANAGER                                                                         
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+    100007 Smith                                                  100005        
+John                                                                            
+Electricals                                                                     
+                                                                                
+    100006 Allen                                                  100005        
+John                                                                            
+Electronics                                                                     
+
+    STAFF# STAFF                                                    MGR#        
+---------- -------------------------------------------------- ----------        
+MANAGER                                                                         
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+                                                                                
+    100009 Rahul                                                  100006        
+Allen                                                                           
+Electricals                                                                     
+                                                                                
+    100008 Raviraj                                                100006        
+Allen                                                                           
+
+    STAFF# STAFF                                                    MGR#        
+---------- -------------------------------------------------- ----------        
+MANAGER                                                                         
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+Mechanics                                                                       
+                                                                                
+    100004 Anil                                                   100006        
+Allen                                                                           
+Electricals                                                                     
+                                                                                
+    100003 Mohan                                                  100006        
+
+    STAFF# STAFF                                                    MGR#        
+---------- -------------------------------------------------- ----------        
+MANAGER                                                                         
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+Allen                                                                           
+Computer Science                                                                
+                                                                                
+    100001 Arvind                                                 100006        
+Allen                                                                           
+Electronics                                                                     
+                                                                                
+
+    STAFF# STAFF                                                    MGR#        
+---------- -------------------------------------------------- ----------        
+MANAGER                                                                         
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+    100010 Ram                                                    100007        
+Smith                                                                           
+Electronics                                                                     
+                                                                                
+    100005 John                                                   100007        
+Smith                                                                           
+Computer Science                                                                
+
+    STAFF# STAFF                                                    MGR#        
+---------- -------------------------------------------------- ----------        
+MANAGER                                                                         
+--------------------------------------------------                              
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+                                                                                
+    100002 Shyam                                                  100007        
+Smith                                                                           
+Electricals                                                                     
+                                                                                
+
+10 rows selected.
+
+SQL> select s1.student_code,s1.student_name,b1.book_code,bm.book_name from student_master s1 inner join book_transactions b1 on s1.student_code=b1.student_code inner join book_master bm on bm.book_code=b1.book_code and b1.Book_expected_return_date=sysdate;
+
+no rows selected
+
+SQL> select s1.staff_code,s1.staff_name,d1.dept_name,dm.design_name,b1.book_code,bm.book_name,b1.Book_issue_Date from staff_master s1 inner join department_master d1 on s1.dept_code=d1.dept_code inner join designation_master dm on s1.design_code=dm.design_code inner join book_transactions b1 on s1.staff_code=b1.staff_code inner join book_master bm on bm.book_code=b1.book_code;
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+DESIGN_NAME                                         BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                          BOOK_ISSU                    
+-------------------------------------------------- ---------                    
+    100007 Smith                                                                
+Electricals                                                                     
+Reader                                               10000005                   
+Relational DBMS                                    14-MAR-11                    
+                                                                                
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+DESIGN_NAME                                         BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                          BOOK_ISSU                    
+-------------------------------------------------- ---------                    
+    100007 Smith                                                                
+Electricals                                                                     
+Reader                                               10000007                   
+Intoduction To Algorithams                         01-APR-11                    
+                                                                                
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+DESIGN_NAME                                         BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                          BOOK_ISSU                    
+-------------------------------------------------- ---------                    
+    100006 Allen                                                                
+Electronics                                                                     
+Reader                                               10000007                   
+Intoduction To Algorithams                         01-APR-10                    
+                                                                                
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+DESIGN_NAME                                         BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                          BOOK_ISSU                    
+-------------------------------------------------- ---------                    
+    100006 Allen                                                                
+Electronics                                                                     
+Reader                                               10000008                   
+Computer Networks                                  10-MAR-11                    
+                                                                                
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DEPT_NAME                                                                       
+--------------------------------------------------                              
+DESIGN_NAME                                         BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                          BOOK_ISSU                    
+-------------------------------------------------- ---------                    
+    100010 Ram                                                                  
+Electronics                                                                     
+Reader                                               10000009                   
+Introduction to O/S                                01-APR-11                    
+                                                                                
+
+SQL>  select s1.staff_code,s1.staff_name,dm.design_name,d1.dept_name,bt.book_code,bm.book_name,bm.book_pub_author ,5*(sysdate-book_expected_return_date) AS FINE from staff_master s1 inner join department_master d1 on s1.dept_code=d1.dept_code inner join designation_master dm on s1.design_code=dm.design_code inner join book_transactions bt on s1.staff_code=bt.staff_code inner join book_master bm on bt.book_code=bm.book_code;
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DESIGN_NAME                                                                     
+--------------------------------------------------                              
+DEPT_NAME                                           BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                                                       
+--------------------------------------------------                              
+BOOK_PUB_AUTHOR                                          FINE                   
+-------------------------------------------------- ----------                   
+    100007 Smith                                                                
+Reader                                                                          
+Electricals                                          10000005                   
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DESIGN_NAME                                                                     
+--------------------------------------------------                              
+DEPT_NAME                                           BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                                                       
+--------------------------------------------------                              
+BOOK_PUB_AUTHOR                                          FINE                   
+-------------------------------------------------- ----------                   
+Relational DBMS                                                                 
+B.C. Desai                                          15203.608                   
+                                                                                
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DESIGN_NAME                                                                     
+--------------------------------------------------                              
+DEPT_NAME                                           BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                                                       
+--------------------------------------------------                              
+BOOK_PUB_AUTHOR                                          FINE                   
+-------------------------------------------------- ----------                   
+    100007 Smith                                                                
+Reader                                                                          
+Electricals                                          10000007                   
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DESIGN_NAME                                                                     
+--------------------------------------------------                              
+DEPT_NAME                                           BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                                                       
+--------------------------------------------------                              
+BOOK_PUB_AUTHOR                                          FINE                   
+-------------------------------------------------- ----------                   
+Intoduction To Algorithams                                                      
+Cormen                                              15118.608                   
+                                                                                
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DESIGN_NAME                                                                     
+--------------------------------------------------                              
+DEPT_NAME                                           BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                                                       
+--------------------------------------------------                              
+BOOK_PUB_AUTHOR                                          FINE                   
+-------------------------------------------------- ----------                   
+    100006 Allen                                                                
+Reader                                                                          
+Electronics                                          10000007                   
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DESIGN_NAME                                                                     
+--------------------------------------------------                              
+DEPT_NAME                                           BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                                                       
+--------------------------------------------------                              
+BOOK_PUB_AUTHOR                                          FINE                   
+-------------------------------------------------- ----------                   
+Intoduction To Algorithams                                                      
+Cormen                                              16943.608                   
+                                                                                
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DESIGN_NAME                                                                     
+--------------------------------------------------                              
+DEPT_NAME                                           BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                                                       
+--------------------------------------------------                              
+BOOK_PUB_AUTHOR                                          FINE                   
+-------------------------------------------------- ----------                   
+    100006 Allen                                                                
+Reader                                                                          
+Electronics                                          10000008                   
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DESIGN_NAME                                                                     
+--------------------------------------------------                              
+DEPT_NAME                                           BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                                                       
+--------------------------------------------------                              
+BOOK_PUB_AUTHOR                                          FINE                   
+-------------------------------------------------- ----------                   
+Computer Networks                                                               
+Tanenbaum                                           15223.608                   
+                                                                                
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DESIGN_NAME                                                                     
+--------------------------------------------------                              
+DEPT_NAME                                           BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                                                       
+--------------------------------------------------                              
+BOOK_PUB_AUTHOR                                          FINE                   
+-------------------------------------------------- ----------                   
+    100010 Ram                                                                  
+Reader                                                                          
+Electronics                                          10000009                   
+
+STAFF_CODE STAFF_NAME                                                           
+---------- --------------------------------------------------                   
+DESIGN_NAME                                                                     
+--------------------------------------------------                              
+DEPT_NAME                                           BOOK_CODE                   
+-------------------------------------------------- ----------                   
+BOOK_NAME                                                                       
+--------------------------------------------------                              
+BOOK_PUB_AUTHOR                                          FINE                   
+-------------------------------------------------- ----------                   
+Introduction to O/S                                                             
+Millan                                              15113.608                   
+                                                                                
+
+SQL> 6.  select staff_code,staff_name,staff_sal from staff_master where staff_sal<(select avg(staff_sal) from staff_master);
+SP2-0734: unknown command beginning "6.  select..." - rest of line ignored.
+SQL> 7.  SELECT BOOK_PUB_AUTHOR,BOOK_NAME FROM BOOK_MASTER WHERE BOOK_PUB_AUTHOR=(SELECT BOOK_PUB_AUTHOR FROM BOOK_MASTER GROUP BY BOOK_PUB_AUTHOR HAVING COUNT(BOOK_PUB_AUTHOR)>1);
+SP2-0734: unknown command beginning "7.  SELECT..." - rest of line ignored.
+SQL> 8.  select staff_code,staff_name,dept_name from staff_master s,department_master d where s.dept_code=d.dept_code and staff_code in (select staff_code from book_transactions group by staff_code having count(staff_code)>=2);
+SP2-0734: unknown command beginning "8.  select..." - rest of line ignored.
+SQL> 9.  select count(student_code ),dept_code from student_master group by dept_code having count(student_code)=(select max(count(student_code)) from student_master group by dept_code);
+SP2-0734: unknown command beginning "9.  select..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> 
+SQL> 
+SQL> 4.1
+SP2-0042: unknown command "4.1" - rest of line ignored.
+SQL> 1.  create table customer(customerid number(5),cust_name varchar2(20),Address1 varchar2(30),Address2 varchar2(30));
+SP2-0734: unknown command beginning "1.  create..." - rest of line ignored.
+SQL> 2.  Alter table customer rename column cust_name to customername;
+SP2-0734: unknown command beginning "2.  Alter ..." - rest of line ignored.
+SQL> 	 Alter table customer modify customername  varchar2(30) Not Null;
+	 Alter table customer modify customername  varchar2(30) Not Null
+	                             *
+ERROR at line 1:
+ORA-00904: "CUSTOMERNAME": invalid identifier 
+
+
+SQL> 3.  Alter table customer add Gender varchar2(1);
+SP2-0734: unknown command beginning "3.  Alter ..." - rest of line ignored.
+SQL> 	 Alter table customer add Age Number(3);
+	 Alter table customer add Age Number(3)
+	                          *
+ERROR at line 1:
+ORA-01430: column being added already exists in table 
+
+
+SQL> 	 Alter table customer add phoneNo number(10);
+	 Alter table customer add phoneNo number(10)
+	                          *
+ERROR at line 1:
+ORA-01430: column being added already exists in table 
+
+
+SQL> 4.  insert into customer values(1000,'Allen','#115 Chicago','#115 Chicago','M',25,7878776);
+SP2-0734: unknown command beginning "4.  insert..." - rest of line ignored.
+SQL> 	 insert into customer values(1001,'George','#116 France','#116 France','M',25,434524);
+	 insert into customer values(1001,'George','#116 France','#116 France','M',25,434524)
+	             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525);
+	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525)
+	             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 5.  Alter table customer add constraints Custid_prim PRIMARY KEY (customerid);
+SP2-0734: unknown command beginning "5.  Alter ..." - rest of line ignored.
+SQL> 6.  insert into customer values(1002,'John','#114 Chicago','#114 Chicago','M',45,439525);
+SP2-0734: unknown command beginning "6.  insert..." - rest of line ignored.
+SQL> 	 ERROR:++ ERROR at line 1:
+SP2-0734: unknown command beginning "ERROR:++ E..." - rest of line ignored.
+SQL> 	 ORA-00001: unique constraint (SYSTEM.CUSTID_PRIM) violated
+SP2-0734: unknown command beginning "ORA-00001:..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> 7.  Alter table customer drop constraint custId_prim;
+SP2-0734: unknown command beginning "7.  Alter ..." - rest of line ignored.
+SQL> 	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525);
+	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525)
+	             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 	 insert into customer values(1003,'Nanapatekar','#115 India','#115 India','M',45,431525);
+	 insert into customer values(1003,'Nanapatekar','#115 India','#115 India','M',45,431525)
+	             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 8.  Alter table customer add constraints Custid_prim PRIMARY KEY (customerid);
+SP2-0734: unknown command beginning "8.  Alter ..." - rest of line ignored.
+SQL> 	 ERROR at line 1:
+SP2-0734: unknown command beginning "ERROR at l..." - rest of line ignored.
+SQL> 	 ORA-02437: cannot validate (SYSTEM.CUSTID_PRIM) - primary key violated
+SP2-0734: unknown command beginning "ORA-02437:..." - rest of line ignored.
+SQL> 9.  alter table customer add salary number(8,2);
+SP2-0734: unknown command beginning "9.  alter ..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> 	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525,15000.50);
+	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525,15000.50)
+	             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 	 insert into customer values(1003,'Nanapatekar','#115 India','#115 India','M',45,431525,20000.50);
+	 insert into customer values(1003,'Nanapatekar','#115 India','#115 India','M',45,431525,20000.50)
+	             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 10.  TRUNCATE table customer;
+SP2-0734: unknown command beginning "10.  TRUNC..." - rest of line ignored.
+SQL> 11.  Alter table customer add e_mail varchar2(30);
+SP2-0734: unknown command beginning "11.  Alter..." - rest of line ignored.
+SQL> 12.  Alter table customer DROP column e_mail;
+SP2-0734: unknown command beginning "12.  Alter..." - rest of line ignored.
+SQL> 13.  create table Suppliers as (select customerid as suppid,customername as sname,address1 as addr1,address2 as addr2,phoneno as contactno from customer);
+SP2-0734: unknown command beginning "13.  creat..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> 14.  create table customermaster(customerid number(5) constraint custid_pk primary key,customername varchar2(30) not null,Address1 varchar2(30) not null,		Address2 varchar2(30),Gender varchar2(1),Age number(3),phoneno number(10));
+SP2-0734: unknown command beginning "14.  creat..." - rest of line ignored.
+SQL> 15.  Create table accountmaster(customerid number(5),Accountnumber number(10,2) Constraint acc_pk primary key,accounttype char(3),ledgerbalance number(10,2) 	   Not Null);
+SP2-0734: unknown command beginning "15.  Creat..." - rest of line ignored.
+SQL> 	  create sequence sequence_acc minvalue 1001 maxvalue 9999 start with 1001 increment by 1 cache 101;
+
+Sequence created.
+
+SQL> 16.  alter table Accountmaster ADD constraint cust_acc FOREIGN KEY(customerid) REFERENCES customermaster(customerid);
+SP2-0734: unknown command beginning "16.  alter..." - rest of line ignored.
+SQL> 17.  insert into customermaster values(1000, 'Allen', '#115 Chicago', '#115 Chicago', 'M', 25, 7878776);
+SP2-0734: unknown command beginning "17.  inser..." - rest of line ignored.
+SQL> 	  insert into customermaster values(1001, 'George', '#116 France', '#116 France', 'M', 25, 434524);
+	  insert into customermaster values(1001, 'George', '#116 France', '#116 France', 'M', 25, 434524)
+	              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> 	  insert into customermaster values(1002, 'Becker', '#114 New York', '#114 New York', 'M', 25, 431525);
+	  insert into customermaster values(1002, 'Becker', '#114 New York', '#114 New York', 'M', 25, 431525)
+	              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> 18.  alter table Accountmaster add constraint check_type check(accounttype='NRI' or accounttype='IND');
+SP2-0734: unknown command beginning "18.  alter..." - rest of line ignored.
+SQL> 19.  alter table Accountmaster add constraint Balance_check check(ledgerbalance > 5000);
+SP2-0734: unknown command beginning "19.  alter..." - rest of line ignored.
+SQL> 20.  drop table accountmaster;
+SP2-0734: unknown command beginning "20.  drop ..." - rest of line ignored.
+SQL> 	  create table accountmaster(customerid number(5),accountnumber number(8,2),accounttype char(3), ledgerbalance number(10,2), CONSTRAINT fk_column FOREIGN KEY(customerid) REFERENCES customer(customerid) ON DELETE CASCADE);
+	  create table accountmaster(customerid number(5),accountnumber number(8,2),accounttype char(3), ledgerbalance number(10,2), CONSTRAINT fk_column FOREIGN KEY(customerid) REFERENCES customer(customerid) ON DELETE CASCADE)
+	                                                                                                                                                                                              *
+ERROR at line 1:
+ORA-02270: no matching unique or primary key for this column-list 
+
+
+SQL> 21.  Create table accountdetails as select * from Accountmaster;
+SP2-0734: unknown command beginning "21.  Creat..." - rest of line ignored.
+SQL> 22.  CREATE VIEW Acc_view AS select Customerid,Accountnumber,AccountType,ledgerBalance from accountmaster;
+SP2-0734: unknown command beginning "22.  CREAT..." - rest of line ignored.
+SQL> 23.  CREATE VIEW vAccs_Dtls AS SELECT Accounttype,ledgerbalance from Accountmaster where accounttype = 'IND' and ledgerbalance < 10000;
+SP2-0734: unknown command beginning "23.  CREAT..." - rest of line ignored.
+SQL> 24.  create view accsvw10 as select * from accountmaster;
+SP2-0734: unknown command beginning "24.  creat..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> 25.  CREATE sequence SEQ_DEPT minvalue 40 MAXVALUE 200 start with 40 increment by 10 cache 40;
+SP2-0734: unknown command beginning "25.  CREAT..." - rest of line ignored.
+SQL> 26.  insert into department_master values(seq_dept.NEXTVAL,'Communications');
+SP2-0734: unknown command beginning "26.  inser..." - rest of line ignored.
+SQL> 	   insert into department_master values(seq_dept.NEXTVAL,'Petroleum');
+	   insert into department_master values(seq_dept.NEXTVAL,'Petroleum')
+	                                        *
+ERROR at line 1:
+ORA-02289: sequence does not exist 
+
+
+SQL> 	  insert into department_master values(seq_dept.NEXTVAL,'Fabrics');
+	  insert into department_master values(seq_dept.NEXTVAL,'Fabrics')
+	                                       *
+ERROR at line 1:
+ORA-02289: sequence does not exist 
+
+
+SQL> 27.  DROP sequence seq_dept;
+SP2-0734: unknown command beginning "27.  DROP ..." - rest of line ignored.
+SQL> 28.  CREATE INDEX no_name on emp(empno);
+SP2-0734: unknown command beginning "28.  CREAT..." - rest of line ignored.
+SQL> 	   select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7369 SMITH      CLERK           7902 17-DEC-80        800                 
+        20                                                                      
+                                                                                
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300      
+        30                                                                      
+                                                                                
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500      
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7566 JONES      MANAGER         7839 02-APR-81       2975                 
+        20                                                                      
+                                                                                
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400      
+        30                                                                      
+                                                                                
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                 
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                 
+        10                                                                      
+                                                                                
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                 
+        20                                                                      
+                                                                                
+      7839 KING       PRESIDENT            17-NOV-81       5000                 
+        10                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0      
+        30                                                                      
+                                                                                
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                 
+        20                                                                      
+                                                                                
+      7900 JAMES      CLERK           7698 03-DEC-81        950                 
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                 
+        20                                                                      
+                                                                                
+
+13 rows selected.
+
+SQL> 29.  create SYNONYM synemp for emp;
+SP2-0734: unknown command beginning "29.  creat..." - rest of line ignored.
+SQL> 30.  select * from synemp;
+SP2-0734: unknown command beginning "30.  selec..." - rest of line ignored.
+SQL> 31.  CREATE INDEX IDX_EMP_HIREDATE on emp(HIREDATE);
+SP2-0734: unknown command beginning "31.  CREAT..." - rest of line ignored.
+SQL> 32.  CREATE sequence SEQ_EMP minvalue 1001 start with 1001 increment by 1 cache 1001;
+SP2-0734: unknown command beginning "32.  CREAT..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> 
+SQL> 
+SQL> 5.
+SP2-0042: unknown command "5." - rest of line ignored.
+SQL> 1.  Create table employee as select * from emp;
+SP2-0734: unknown command beginning "1.  Create..." - rest of line ignored.
+SQL>      desc employee;
+ERROR:
+ORA-04043: object employee does not exist 
+
+
+SQL> 2.  select * from employee;
+SP2-0734: unknown command beginning "2.  select..." - rest of line ignored.
+SQL> 3.  update employee set job=(select job from employee where empno=7788),deptno=(select deptno from employee where empno=7788) where empno=7698;
+SP2-0734: unknown command beginning "3.  update..." - rest of line ignored.
+SQL> 4.  delete from department where dept_name='SALES';
+SP2-0734: unknown command beginning "4.  delete..." - rest of line ignored.
+SQL> 5.  update employee set empno=7788 where empno=7698;
+SP2-0734: unknown command beginning "5.  update..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> 6.  insert into emp (empno,ename,job,mgr,hiredate,sal,comm,deptno) values (1000,'Allen', 'Clerk',1001,'12-jan-01', 3000, 2,10);
+SP2-0734: unknown command beginning "6.  insert..." - rest of line ignored.
+SQL> 	  insert into emp (empno,ename,job,mgr,hiredate,sal,comm,deptno) values (1001,'George', 'Analyst',null,'08-sep-1992', 5000, 0,10);
+
+1 row created.
+
+SQL> 	 insert into emp (empno,ename,job,mgr,hiredate,sal,comm,deptno) values (1002,'Becker', 'Manager',1000,'04-nov-1992', 2800, 4,20);
+
+1 row created.
+
+SQL> 	 insert into emp (empno,ename,job,mgr,hiredate,sal,comm,deptno) values (1003,'Bill','Clerk',1002,'04-nov-1992', 3000,0,20);
+
+1 row created.
+
+SQL> 
+SQL> 
+SQL> 6.
+SP2-0042: unknown command "6." - rest of line ignored.
+SQL> 1.  insert into customermaster (customerid,customername,address1,address2,gender,age,phoneno,salary) values ( 6000, 'John','#115 Chicago','#115 Chicago','M',25,7878776,10000);
+SP2-0734: unknown command beginning "1.  insert..." - rest of line ignored.
+SQL>      insert into customermaster (customerid,customername,address1,address2,gender,age,phoneno,salary) values ( 6001, 'Jack','#116 France','#116 France','M',25,434524,20000);
+     insert into customermaster (customerid,customername,address1,address2,gender,age,phoneno,salary) values ( 6001, 'Jack','#116 France','#116 France','M',25,434524,20000)
+                 *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> 	 insert into customermaster (customerid,customername,address1,address2,gender,age,phoneno,salary) values ( 6002, 'James','#114 New York','#114 New York','M',45,431525,15000.50);
+	 insert into customermaster (customerid,customername,address1,address2,gender,age,phoneno,salary) values ( 6002, 'James','#114 New York','#114 New York','M',45,431525,15000.50)
+	             *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> 2.  savepoint sp1;
+SP2-0734: unknown command beginning "2.  savepo..." - rest of line ignored.
+SQL> 3.  insert into customermaster (customerid,customername,address1,address2,gender,age,phoneno,salary) values (6003, 'John','#114 Chicago','#114 Chicago','M',45,439525,19000.60);
+SP2-0734: unknown command beginning "3.  insert..." - rest of line ignored.
+SQL> 4.  rollback to sp1;
+SP2-0734: unknown command beginning "4.  rollba..." - rest of line ignored.
+SQL> 	  commit;
+
+Commit complete.
+
+SQL> spool off;

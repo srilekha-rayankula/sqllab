@@ -1,0 +1,409 @@
+SQL> create table customer(customerid number(5),cust_name varchar2(20),Address1 varchar2(30),Address2 varchar2(30));
+create table customer(customerid number(5),cust_name varchar2(20),Address1 varchar2(30),Address2 varchar2(30))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create table customer(customerid number(5),cust_name varchar2(20),Address1 varchar2(30),Address2 varchar2(30));
+create table customer(customerid number(5),cust_name varchar2(20),Address1 varchar2(30),Address2 varchar2(30))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> Alter table customer rename column cust_name to customername;
+
+Table altered.
+
+SQL> 	 Alter table customer modify customername  varchar2(30) Not Null;
+
+Table altered.
+
+SQL>  Alter table customer add Gender varchar2(1);
+
+Table altered.
+
+SQL> 	 Alter table customer add Age Number(3);
+	 Alter table customer add Age Number(3)
+	                          *
+ERROR at line 1:
+ORA-01430: column being added already exists in table 
+
+
+SQL> 	 Alter table customer add phoneNo number(10);
+	 Alter table customer add phoneNo number(10)
+	                          *
+ERROR at line 1:
+ORA-01430: column being added already exists in table 
+
+
+SQL> insert into customer values(1000,'Allen','#115 Chicago','#115 Chicago','M',25,7878776);
+insert into customer values(1000,'Allen','#115 Chicago','#115 Chicago','M',25,7878776)
+                                                                       *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> 	 insert into customer values(1001,'George','#116 France','#116 France','M',25,434524);
+	 insert into customer values(1001,'George','#116 France','#116 France','M',25,434524)
+	                                                                       *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> 	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525);
+	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525)
+	                                                                           *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> drop table customer;
+
+Table dropped.
+
+SQL> create table customer(customerid number(5),cust_name varchar2(20),Address1 varchar2(30),Address2 varchar2(30));
+
+Table created.
+
+SQL> Alter table customer rename column cust_name to customername;
+
+Table altered.
+
+SQL> 	 Alter table customer modify customername  varchar2(30) Not Null;
+
+Table altered.
+
+SQL> 3.  Alter table customer add Gender varchar2(1);
+SP2-0734: unknown command beginning "3.  Alter ..." - rest of line ignored.
+SQL> 	 Alter table customer add Age Number(3);
+
+Table altered.
+
+SQL> 	 Alter table customer add phoneNo number(10);
+
+Table altered.
+
+SQL> insert into customer values(1000,'Allen','#115 Chicago','#115 Chicago','M',25,7878776);
+insert into customer values(1000,'Allen','#115 Chicago','#115 Chicago','M',25,7878776)
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 	 insert into customer values(1001,'George','#116 France','#116 France','M',25,434524);
+	 insert into customer values(1001,'George','#116 France','#116 France','M',25,434524)
+	             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525);
+	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525)
+	             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 5.  Alter table customer add constraints Custid_prim PRIMARY KEY (customerid);
+SP2-0734: unknown command beginning "5.  Alter ..." - rest of line ignored.
+SQL> 6.  insert into customer values(1002,'John','#114 Chicago','#114 Chicago','M',45,439525);
+SP2-0734: unknown command beginning "6.  insert..." - rest of line ignored.
+SQL> insert into customer values(1000,'Allen','#115 Chicago','#115 Chicago','M',25,7878776);
+insert into customer values(1000,'Allen','#115 Chicago','#115 Chicago','M',25,7878776)
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 	 insert into customer values(1001,'George','#116 France','#116 France','M',25,434524);
+	 insert into customer values(1001,'George','#116 France','#116 France','M',25,434524)
+	             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525);
+	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525)
+	             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> Alter table customer add constraints Custid_prim PRIMARY KEY (customerid);
+
+Table altered.
+
+SQL> insert into customer values(1002,'John','#114 Chicago','#114 Chicago','M',45,439525);
+insert into customer values(1002,'John','#114 Chicago','#114 Chicago','M',45,439525)
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> Alter table customer drop constraint custId_prim;
+
+Table altered.
+
+SQL> 	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525);
+	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525)
+	             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 	 insert into customer values(1003,'Nanapatekar','#115 India','#115 India','M',45,431525);
+	 insert into customer values(1003,'Nanapatekar','#115 India','#115 India','M',45,431525)
+	             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> Alter table customer add constraints Custid_prim PRIMARY KEY (customerid);
+
+Table altered.
+
+SQL> alter table customer add salary number(8,2);
+
+Table altered.
+
+SQL> 	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525,15000.50);
+	 insert into customer values(1002,'Becker','#114 New York','#114 New York','M',45,431525,15000.50)
+	             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 	 insert into customer values(1003,'Nanapatekar','#115 India','#115 India','M',45,431525,20000.50);
+	 insert into customer values(1003,'Nanapatekar','#115 India','#115 India','M',45,431525,20000.50)
+	             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> TRUNCATE table customer;
+
+Table truncated.
+
+SQL>  Alter table customer add e_mail varchar2(30);
+
+Table altered.
+
+SQL> 12.  Alter table customer DROP column e_mail;
+SP2-0734: unknown command beginning "12.  Alter..." - rest of line ignored.
+SQL> Alter table customer DROP column e_mail;
+
+Table altered.
+
+SQL> create table Suppliers as (select customerid as suppid,customername as sname,address1 as addr1,address2 as addr2,phoneno as contactno from customer);
+
+Table created.
+
+SQL>  create table customermaster(customerid number(5) constraint custid_pk primary key,customername varchar2(30) not null,Address1 varchar2(30) not null,		Address2 varchar2(30),Gender varchar2(1),Age number(3),phoneno number(10));
+
+Table created.
+
+SQL> Create table accountmaster(customerid number(5),Accountnumber number(10,2) Constraint acc_pk primary key,accounttype char(3),ledgerbalance number(10,2) 	   Not Null);
+
+Table created.
+
+SQL> 	  create sequence sequence_acc minvalue 1001 maxvalue 9999 start with 1001 increment by 1 cache 101;
+	  create sequence sequence_acc minvalue 1001 maxvalue 9999 start with 1001 increment by 1 cache 101
+	                  *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL>  alter table Accountmaster ADD constraint cust_acc FOREIGN KEY(customerid) REFERENCES customermaster(customerid);
+
+Table altered.
+
+SQL>  insert into customermaster values(1000, 'Allen', '#115 Chicago', '#115 Chicago', 'M', 25, 7878776);
+
+1 row created.
+
+SQL> 	  insert into customermaster values(1001, 'George', '#116 France', '#116 France', 'M', 25, 434524);
+
+1 row created.
+
+SQL> 	  insert into customermaster values(1002, 'Becker', '#114 New York', '#114 New York', 'M', 25, 431525);
+
+1 row created.
+
+SQL> alter table Accountmaster add constraint check_type check(accounttype='NRI' or accounttype='IND');
+
+Table altered.
+
+SQL>  alter table Accountmaster add constraint Balance_check check(ledgerbalance > 5000);
+
+Table altered.
+
+SQL> drop table accountmaster;
+
+Table dropped.
+
+SQL> 	  create table accountmaster(customerid number(5),accountnumber number(8,2),accounttype char(3), ledgerbalance number(10,2), CONSTRAINT fk_column FOREIGN KEY(customerid) REFERENCES customer(customerid) ON DELETE CASCADE);
+
+Table created.
+
+SQL> Create table accountdetails as select * from Accountmaster;
+
+Table created.
+
+SQL> CREATE VIEW Acc_view AS select Customerid,Accountnumber,AccountType,ledgerBalance from accountmaster;
+CREATE VIEW Acc_view AS select Customerid,Accountnumber,AccountType,ledgerBalance from accountmaster
+            *
+ERROR at line 1:
+ORA-01031: insufficient privileges 
+
+
+SQL> CREATE VIEW vAccs_Dtls AS SELECT Accounttype,ledgerbalance from Accountmaster where accounttype = 'IND' and ledgerbalance < 10000;
+CREATE VIEW vAccs_Dtls AS SELECT Accounttype,ledgerbalance from Accountmaster where accounttype = 'IND' and ledgerbalance < 10000
+            *
+ERROR at line 1:
+ORA-01031: insufficient privileges 
+
+
+SQL> create view accsvw10 as select * from accountmaster;
+create view accsvw10 as select * from accountmaster
+            *
+ERROR at line 1:
+ORA-01031: insufficient privileges 
+
+
+SQL> CREATE sequence SEQ_DEPT minvalue 40 MAXVALUE 200 start with 40 increment by 10 cache 40;
+
+Sequence created.
+
+SQL> insert into department_master values(seq_dept.NEXTVAL,'Communications');
+insert into department_master values(seq_dept.NEXTVAL,'Communications')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SORNA.SYS_C008494) violated 
+
+
+SQL> 	   insert into department_master values(seq_dept.NEXTVAL,'Petroleum');
+	   insert into department_master values(seq_dept.NEXTVAL,'Petroleum')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SORNA.SYS_C008494) violated 
+
+
+SQL> 	  insert into department_master values(seq_dept.NEXTVAL,'Fabrics');
+
+1 row created.
+
+SQL>  DROP sequence seq_dept;
+
+Sequence dropped.
+
+SQL> CREATE INDEX no_name on emp(empno);
+
+Index created.
+
+SQL> 	   select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7369 SMITH      CLERK           7902 17-DEC-80        800                 
+        20                                                                      
+                                                                                
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300      
+        30                                                                      
+                                                                                
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500      
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7566 JONES      MANAGER         7839 02-APR-81       2975                 
+        20                                                                      
+                                                                                
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400      
+        30                                                                      
+                                                                                
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                 
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                 
+        10                                                                      
+                                                                                
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                 
+        20                                                                      
+                                                                                
+      7839 KING       PRESIDENT            17-NOV-81       5000                 
+        10                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0      
+        30                                                                      
+                                                                                
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                 
+        20                                                                      
+                                                                                
+      7900 JAMES      CLERK           7698 03-DEC-81        950                 
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                 
+        20                                                                      
+                                                                                
+      1001 George     Analyst              08-SEP-92       5000          0      
+        10                                                                      
+                                                                                
+      1002 Becker     Manager         1000 04-NOV-92       2800          4      
+        20                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      1003 Bill       Clerk           1002 04-NOV-92       3000          0      
+        20                                                                      
+                                                                                
+
+16 rows selected.
+
+SQL> create SYNONYM synemp for emp;
+create SYNONYM synemp for emp
+*
+ERROR at line 1:
+ORA-01031: insufficient privileges 
+
+
+SQL> select * from synemp;
+select * from synemp
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> CREATE INDEX IDX_EMP_HIREDATE on emp(HIREDATE);
+
+Index created.
+
+SQL> CREATE sequence SEQ_EMP minvalue 1001 start with 1001 increment by 1 cache 1001;
+
+Sequence created.
+
+SQL> spool off;
